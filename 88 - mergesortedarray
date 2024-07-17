@@ -1,0 +1,25 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        last = m + n
+        while last > m:
+            nums1[last-1] = nums2[n-1]
+            n -= 1
+            last -= 1
+        n = len(nums1)
+        for i in range(n):
+            swapped = False
+
+            # Last i elements are already in place
+            for j in range(0, n-i-1):
+
+                # Traverse the array from 0 to n-i-1
+                # Swap if the element found is greater
+                # than the next element
+                if nums1[j] > nums1[j+1]:
+                    nums1[j], nums1[j+1] = nums1[j+1], nums1[j]
+                    swapped = True
+            if (swapped == False):
+                break
